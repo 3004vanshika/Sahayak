@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create New Bubble</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<main class="app">
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <span class="back-btn">←</span>
+    <div>
+      <h2>Create New Bubble</h2>
+      <p class="subtext">Create a Bubble to stay connected.</p>
+    </div>
+  </header>
+
+  <!-- STEP CARD -->
+  <section class="card step-card">
+    <div class="step-left">
+      <div class="progress-ring"></div>
+      <div>
+        <strong>Step 1</strong>
+        <p>Creating Bubble</p>
+      </div>
+    </div>
+    <span class="pill">Add friends next</span>
+  </section>
+
+  <!-- ICON + COLOR -->
+  <section class="card">
+
+    <!-- BIG PREVIEW -->
+    <div class="bubble-preview" id="bubblePreview">
+      <span id="previewIcon">🏠</span>
+    </div>
+
+    <!-- ICONS -->
+    <div class="icon-row">
+      <button class="icon-btn active" onclick="selectIcon(this,'🏠')">🏠</button>
+      <button class="icon-btn" onclick="selectIcon(this,'👨‍👩‍👧')">👨‍👩‍👧</button>
+      <button class="icon-btn" onclick="selectIcon(this,'🤝')">🤝</button>
+      <button class="icon-btn" onclick="selectIcon(this,'🚕')">🚕</button>
+      <button class="icon-btn" onclick="selectIcon(this,'💼')">💼</button>
+    </div>
+
+    <!-- COLORS -->
+    <div class="color-row">
+      <span class="color active" style="background:#dcd6ff" onclick="selectColor(this,'#dcd6ff')"></span>
+      <span class="color" style="background:#b3e5fc" onclick="selectColor(this,'#b3e5fc')"></span>
+      <span class="color" style="background:#c8facc" onclick="selectColor(this,'#c8facc')"></span>
+      <span class="color" style="background:#fff3cd" onclick="selectColor(this,'#fff3cd')"></span>
+      <span class="color" style="background:#ffccbc" onclick="selectColor(this,'#ffccbc')"></span>
+      <span class="color" style="background:#f8bbd0" onclick="selectColor(this,'#f8bbd0')"></span>
+    </div>
+
+  </section>
+
+  <!-- BUBBLE NAME -->
+  <section class="card">
+    <label>Bubble name</label>
+    <input
+      type="text"
+      id="bubbleName"
+      maxlength="20"
+      placeholder="e.g., My Family Bubble"
+      oninput="updateName()"
+    />
+    <small id="count">0/20</small>
+  </section>
+
+  <!-- TYPE -->
+  <section class="card">
+    <label>Select Bubble type</label>
+    <div class="radio-row">
+      <label>
+        <input type="radio" name="type" value="permanent"
+               onclick="toggleDuration(false)"> Permanent
+      </label>
+      <label>
+        <input type="radio" name="type" value="temporary"
+               onclick="toggleDuration(true)"> Temporary
+      </label>
+    </div>
+  </section>
+
+  <!-- DURATION -->
+  <section class="card" id="durationSection">
+    <label>Select Duration</label>
+    <div class="radio-row">
+      <label>
+        <input type="radio" name="duration" value="1"
+               onclick="checkForm()"> 1 Hour
+      </label>
+      <label>
+        <input type="radio" name="duration" value="6"
+               onclick="checkForm()"> 6 Hours
+      </label>
+      <label>
+        <input type="radio" name="duration" value="custom"
+               onclick="checkForm()"> 24 Hours
+      </label>
+    </div>
+  </section>
+
+  <!-- CREATE -->
+  <button id="createBtn" class="primary-btn disabled" disabled onclick="goNext()">
+    Create
+  </button>
+
+</main>
+
+<script>
+  const durationSection = document.getElementById("durationSection");
+
+  function selectIcon(btn, icon) {
+    document.querySelectorAll('.icon-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    previewIcon.textContent = icon;
+    checkForm();
+  }
+
+  function selectColor(el, color) {
+    document.querySelectorAll('.color').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    bubblePreview.style.background = color;
+    checkForm();
+  }
+
+  function updateName() {
+    count.textContent = `${bubbleName.value.length}/20`;
+    checkForm();
+  }
+
+  function toggleDuration(show) {
+    durationSection.style.display = show ? "block" : "none";
+    if (!show) {
+      document.querySelectorAll('input[name="duration"]').forEach(d => d.checked = false);
+    }
+    checkForm();
+  }
+
+  function checkForm() {
+    const name = bubbleName.value.trim();
+    const type = document.querySelector('input[name="type"]:checked');
+    const duration = document.querySelector('input[name="duration"]:checked');
+
+    let valid = name && type;
+    if (type && type.value === "temporary") valid = valid && duration;
+
+    createBtn.disabled = !valid;
+    createBtn.classList.toggle("disabled", !valid);
+  }
+
+  function goNext() {
+    window.location.href = "screen8.html";
+  }
+
+  // Hide duration initially
+  durationSection.style.display = "none";
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Friends</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="app">
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <div>
+      <h2>Create New Bubble</h2>
+      <p class="subtext">Create a Bubble to stay connected.</p>
+    </div>
+  </header>
+
+  <!-- STEP 2 CARD -->
+  <section class="card step-card">
+    <div class="step-left">
+      <div class="progress-ring step2"></div>
+      <div>
+        <strong>Step 2</strong>
+        <p>Adding friends</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVITE LINK CARD -->
+  <section class="card invite-card">
+    <div class="invite-text">
+      <h4>Invite Link</h4>
+      <p>
+        Share this link with friends to invite them to your bubble.
+      </p>
+    </div>
+
+    <div class="invite-actions">
+      <button class="icon-action" onclick="copyLink()">📋</button>
+      <button class="icon-action" onclick="shareLink()">🔗</button>
+    </div>
+  </section>
+
+  <!-- DONE BUTTON -->
+  <button class="primary-btn" onclick="finishSetup()">
+    Done
+  </button>
+
+</main>
+
+<script>
+  function copyLink() {
+    alert("Invite link copied!");
+  }
+
+  function shareLink() {
+    alert("Share options opened!");
+  }
+
+  function finishSetup() {
+    alert("Bubble created successfully!");
+    // later: redirect to home/dashboard
+  }
+</script>
+
+</body>
+</html>

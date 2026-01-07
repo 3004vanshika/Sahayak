@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Location Access Required</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="app">
+
+  <!-- TOP BOXED HEADER (NOW IN A CARD) -->
+  <section class="card permission-header">
+    <div class="permission-header-inner">
+      <div class="icon-circle">📍</div>
+      <div>
+        <h3>Location Access Required</h3>
+        <p class="subtext">For your safety features to work</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="hint-text">
+    Here's why each permission matters:
+  </p>
+
+  <!-- GPS LOCATION -->
+  <section class="card permission-card">
+    <div class="icon-circle">📡</div>
+    <div>
+      <h4>GPS Location</h4>
+      <p>
+        Enables emergency services and your trusted contacts to locate you
+        instantly when you trigger an SOS alert.
+      </p>
+    </div>
+  </section>
+
+  <!-- ALLOW ALL THE TIME -->
+  <section class="card permission-card important">
+    <div class="icon-circle">🧭</div>
+    <div>
+      <div class="row-between">
+        <h4>Allow All The Time</h4>
+        <span class="badge">Important</span>
+      </div>
+      <p>
+        Select “Allow all the time” so I'm Safe can track your location during
+        emergencies even when the app is in the background or your screen is off.
+      </p>
+    </div>
+  </section>
+
+  <!-- PHYSICAL ACTIVITY -->
+  <section class="card permission-card">
+    <div class="icon-circle">🏃</div>
+    <div>
+      <h4>Physical Activity</h4>
+      <p>
+        Recognizes when you're walking, running, or in a vehicle to provide
+        accurate location updates and conserve battery.
+      </p>
+    </div>
+  </section>
+
+  <!-- BATTERY OPTIMIZATION -->
+  <section class="card permission-card">
+    <div class="icon-circle">🔋</div>
+    <div>
+      <h4>Disable Battery Optimization</h4>
+      <p>
+        Ensures uninterrupted background tracking during emergencies.
+      </p>
+    </div>
+  </section>
+
+  <button class="primary-btn" onclick="goToStep2()">Continue</button>
+
+<script>
+  function goToStep2() {
+    window.location.href = "screen9.html";
+  }
+</script>
+
+</main>
+
+<script>
+  function continueNext() {
+    alert("System permission request would be triggered here in native app.");
+  }
+</script>
+
+</body>
+</html>
